@@ -1,18 +1,18 @@
 function FormTodo(props) {
-  const setJob = props.setTodo;
+  const setJob = props.setJob;
   return (
-    <div className="heading">
+    <form onSubmit={props.addJob} className="heading">
       <input
         type="text"
         id="input"
         placeholder="Title..."
-        value={props.todoItem}
+        value={props.job}
         onChange={e => setJob(e.target.value)}
       />
-      <button className="btn btn-add-todo btn-primary" onClick={props.addTodo}>
+      <button className="btn btn-add-todo btn-primary">
         Add
       </button>
-    </div>
+    </form>
   );
 }
 export default FormTodo;

@@ -1,13 +1,13 @@
 function ListTodo(props) {
   return (
     <ul className="list-todo">
-      {props.todoList.map((job, index) => (
-        <li className="list-item" key={index}>
+      {props.jobs.map((job, index) => (
+        <li className="todo-item" key={index}>
           <span className="content">{job}</span>
           <button
             className="btn btn-secondary"
             onClick={ () => {
-              props.removeTodo(index);
+              props.removeJob(index);
           }}>X</button>
         </li>
       ))}

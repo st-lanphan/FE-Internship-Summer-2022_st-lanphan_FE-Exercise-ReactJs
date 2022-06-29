@@ -1,17 +1,9 @@
+import {useState} from "react";
 import ListTodo from "./ListTodo";
 import FormTodo from "./FormTodo";
-import {useState} from "react";
-const listKeys = {
-  todoList: 'jobs'
-}
+import { listKeys } from "../shared/constant";
+import { setStorage, getStorage } from "../shared/common";
 
-function setStorage(key, value) {
-  localStorage.setItem(key, JSON.stringify(value));
-};
-
-function getStorage(key) {
-  return JSON.parse(localStorage.getItem(key));
-};
 function TodoApp() {
   const [job, setJob] = useState('');
   const [jobs,setJobs] = useState(() => {
@@ -20,12 +12,13 @@ function TodoApp() {
   });
 
   const handleSubmit = (e) => {
-     setJobs(prev => {
+    e.preventDefault();
+    setJobs(prev => {
       const newJobs = [...prev,job];
       setStorage(listKeys.todoList,newJobs);
       return newJobs;
-     })
-     setJob('');
+    })
+    setJob('');
   }
   const handleRemove = (index) => {
     setJobs(prev => {
@@ -42,14 +35,13 @@ function TodoApp() {
       <div className="wrapper">
         <h1 className="headline">Todo List</h1>
         <FormTodo
-        addTodo = {handleSubmit}
-        todoItem = {job}
-        setTodo = {setJob}
+        addJob = {handleSubmit}
+        job = {job}
+        setJob = {setJob}
         />
         <ListTodo
-        removeTodo = {handleRemove}
-        todoList = {jobs}
-        todoItem = {job}
+        removeJob = {handleRemove}
+        jobs = {jobs}
         />
       </div>
     
