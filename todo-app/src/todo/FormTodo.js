@@ -1,7 +1,7 @@
 function FormTodo(props) {
   const setJob = props.setJob;
   return (
-    <form onSubmit={props.addJob} className="heading">
+    <form onSubmit={props.addJob} className="form-todo">
       <input
         type="text"
         id="input"

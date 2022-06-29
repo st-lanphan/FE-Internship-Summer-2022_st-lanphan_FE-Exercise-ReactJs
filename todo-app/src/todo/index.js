@@ -10,7 +10,6 @@ function TodoApp() {
     const storageJobs = getStorage(listKeys.todoList)  ;
     return storageJobs ?? [];
   });
-
   const handleSubmit = (e) => {
     e.preventDefault();
     setJobs(prev => {
@@ -26,25 +25,23 @@ function TodoApp() {
       newPrev.splice(index,1);
       setStorage(listKeys.todoList,newPrev);
       return newPrev;
-
     })
   }
   
   return (
     <div className="container">
       <div className="wrapper">
-        <h1 className="headline">Todo List</h1>
+        <h1 className="todo-title">Todo List</h1>
         <FormTodo
-        addJob = {handleSubmit}
-        job = {job}
-        setJob = {setJob}
+          addJob = {handleSubmit}
+          job = {job}
+          setJob = {setJob}
         />
         <ListTodo
-        removeJob = {handleRemove}
-        jobs = {jobs}
+          removeJob = {handleRemove}
+          jobs = {jobs}
         />
       </div>
-    
     </div>
   );
 }
